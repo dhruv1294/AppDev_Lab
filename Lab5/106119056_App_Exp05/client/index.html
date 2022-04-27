@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LAB 5</title>
+    <style>
+        body {
+    	   background-color: #B7FFBF
+    	}
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin: auto;
+        }
+
+        #button {
+            background-color: black;
+            color: #ffffff;
+            padding: 10px 35px;
+
+        }
+
+        table div {
+            margin: auto;
+            border-bottom: 1px solid #ddd;
+            width: 50%;
+        }
+
+        table div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        button {
+            background-color: #04AA6D;
+    	    border-radius: 4px;
+    	    padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <h1>LAB 5</h1>
+
+        <form action="none" id="form">
+            <div>
+                <label for="username">Enter UserId</label>
+                <input id="username" name="username" required="true" autocomplete="true" value="usr01"
+                    pattern="usr(0[1-9]|10)"></input>
+            </div>
+            <div>
+                <button type="submit">Show </button>
+            </div>
+        </form>
+        <br><br>
+        <table id="demo"></table>
+    </div>
+
+
+    <script>
+        let form = document.getElementById("form");
+        form.addEventListener('submit', loadDoc)
+
+        function loadDoc(event) {
+            event.preventDefault();
+            let username = event.target.username.value
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this, username);
+                }
+            };
+            xhttp.open("GET", "/users", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml, username) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Id</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>";
+            var x = xmlDoc.getElementsByTagName("user");
+            let invalidUser = true;
+            for (i = 0; i < x.length; i++) {
+                if (x[i].getElementsByTagName("userid")[0].childNodes[0].nodeValue === username) {
+                    invalidUser = false;
+                    table += "<tr><td>" +
+                        x[i].getElementsByTagName("userid")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("username")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("address")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("phone")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("email")[0].childNodes[0].nodeValue +
+                        "</td></tr>";
+                }
+            }
+            if (invalidUser) {
+                document.getElementById("demo").innerHTML = "Invalid UserId";
+            } else {
+                document.getElementById("demo").innerHTML = table;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

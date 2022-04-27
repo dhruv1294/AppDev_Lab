@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000428"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Caller App"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="#1AA1C3"
+        android:gravity="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:id="@+id/input"
+        android:layout_centerVertical="true"
+        android:hint="Enter the phone number to call"
+        android:drawableLeft="@drawable/ic_baseline_phone_24"
+        android:gravity="center"
+        android:textColorHint="#1AA1C3"
+        android:textColor="#1AA1C3"
+        android:textSize="25dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:text="Call"
+        android:textStyle="italic"
+        android:textColor="#1AA1C3"
+        android:textSize="25dp"
+        android:layout_below="@id/input"
+        android:layout_centerHorizontal="true"
+
+        android:layout_margin="10dp"
+        android:id="@+id/call"
+        />
+
+
+</RelativeLayout>

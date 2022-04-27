@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000428"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera Storage"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="#1AA1C3"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:id="@+id/cambtm"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="200dp"
+        android:background="@android:color/transparent"
+        android:text="Click a Photo"
+        android:textSize="25dp"
+        android:padding="10dp"
+        android:textColor="#1AA1C3" />
+
+
+
+</RelativeLayout>
